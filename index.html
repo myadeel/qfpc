@@ -634,7 +634,7 @@
             background-color: var(--bg-alt); /* Soft gray-blue */
         }
         
-        #about {
+        #why-choose-us {
             background-color: var(--bg-white);
         }
         
@@ -1023,6 +1023,54 @@
             z-index: 2;
         }
 
+        /* Success Card overlay inside Form Section */
+        .form-success-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2.5rem 1rem;
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        .success-checkmark-wrapper {
+            width: 80px;
+            height: 80px;
+            background: rgba(0, 212, 255, 0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(0, 212, 255, 0.4);
+            box-shadow: 0 0 25px rgba(0, 212, 255, 0.2);
+        }
+
+        .success-checkmark-wrapper i {
+            font-size: 2.5rem;
+            color: var(--accent-cyan);
+            animation: scaleCheck 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+
+        .form-success-card h3 {
+            font-size: 2rem;
+            color: var(--text-light);
+            margin-bottom: 0.8rem;
+        }
+
+        .form-success-card p {
+            color: #b0c4de;
+            font-size: 1.1rem;
+            max-width: 500px;
+            line-height: 1.6;
+        }
+
+        @keyframes scaleCheck {
+            0% { transform: scale(0); }
+            100% { transform: scale(1); }
+        }
+
         .form-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -1272,8 +1320,8 @@
                 <ul>
                     <li><a href="#home" class="nav-link">Home</a></li>
                     <li><a href="#services" class="nav-link">Services</a></li>
-                    <li><a href="#gallery" class="nav-link">Gallery</a></li>
-                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#gallery" class="nav-link">See Our Work</a></li>
+                    <li><a href="#why-choose-us" class="nav-link">Why Choose Us</a></li>
                     <li><a href="#faq" class="nav-link">FAQs</a></li>
                     <li><a href="#contact" class="btn">Get Estimate</a></li>
                 </ul>
@@ -1290,8 +1338,8 @@
             <ul>
                 <li><a href="#home" class="nav-link">Home</a></li>
                 <li><a href="#services" class="nav-link">Services</a></li>
-                <li><a href="#gallery" class="nav-link">Gallery</a></li>
-                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#gallery" class="nav-link">See Our Work</a></li>
+                <li><a href="#why-choose-us" class="nav-link">Why Choose Us</a></li>
                 <li><a href="#faq" class="nav-link">FAQs</a></li>
                 <li style="margin-top: 15px;"><a href="#contact" class="btn">Get Free Estimate</a></li>
             </ul>
@@ -1465,7 +1513,7 @@
     </section>
 
     <!-- About Section -->
-    <section id="about">
+    <section id="why-choose-us">
         <div class="container about-wrap">
             <!-- Left Side: Content -->
             <div class="about-content reveal">
@@ -1617,25 +1665,33 @@
             <h2 class="section-title reveal">Request a Free Estimate</h2>
             <p class="section-subtitle reveal delay-1">Fill out the form below and we will get back to you promptly.</p>
             <div class="estimate-form reveal delay-2">
-                <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Form submitted successfully! We will contact you soon.');">
-                    <div class="form-grid">
+                <!-- Submission script hooks into this ID and redirects form submit action to Web3Forms AJAX -->
+                <form id="estimate-form" action="https://api.web3forms.com/submit" method="POST">
+                    
+                    <!-- WEB3FORMS CONFIGURATION CHANNELS -->
+                    <input type="hidden" name="access_key" value="b979982d-7d24-494e-b1ac-6bd98c8a4048">
+                    <input type="hidden" name="subject" value="New Website Cleaning Estimate Request">
+                    <input type="hidden" name="from_name" value="Quality First Pro Cleaning Service">
+                    
+                    <!-- Dynamic form container block -->
+                    <div class="form-grid" id="form-grid-content">
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Full name*" required>
+                            <input type="text" name="name" class="form-control" placeholder="Full name*" required>
                         </div>
                         <div class="form-group">
-                            <input type="email" class="form-control" placeholder="Email*" required>
+                            <input type="email" name="email" class="form-control" placeholder="Email*" required>
                         </div>
                         <div class="form-group">
-                            <input type="tel" class="form-control" placeholder="Contact number*" required>
+                            <input type="tel" name="phone" class="form-control" placeholder="Contact number*" required>
                         </div>
                         <div class="form-group">
-                            <input type="number" class="form-control" placeholder="Zip Code*" required>
+                            <input type="number" name="zip" class="form-control" placeholder="Zip Code*" required>
                         </div>
                         <div class="form-group">
-                            <input type="number" class="form-control" placeholder="House Sqft Estimate*" required>
+                            <input type="number" name="sqft" class="form-control" placeholder="House Sqft Estimate*" required>
                         </div>
                         <div class="form-group">
-                            <select class="form-control" required>
+                            <select name="service" class="form-control" required>
                                 <option value="" disabled selected>Service*</option>
                                 <option value="residential">Residential Cleaning</option>
                                 <option value="commercial">Commercial Cleaning</option>
@@ -1646,7 +1702,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <select class="form-control" required>
+                            <select name="bedrooms" class="form-control" required>
                                 <option value="" disabled selected>How Many Bedrooms?*</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
@@ -1656,7 +1712,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <select class="form-control" required>
+                            <select name="bathrooms" class="form-control" required>
                                 <option value="" disabled selected>How Many Bathrooms?*</option>
                                 <option value="1">1</option>
                                 <option value="1.5">1.5</option>
@@ -1667,7 +1723,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <select class="form-control" required>
+                            <select name="pets" class="form-control" required>
                                 <option value="" disabled selected>How Many Pets?*</option>
                                 <option value="0">0</option>
                                 <option value="1">1</option>
@@ -1675,15 +1731,17 @@
                                 <option value="3+">3+</option>
                             </select>
                         </div>
-                        <!-- New Select Date Field -->
+                        <!-- Select Date Field -->
                         <div class="form-group">
-                            <input type="text" onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'" class="form-control" placeholder="Preferred Service Date*" required>
+                            <input type="text" name="preferred_date" onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'" class="form-control" placeholder="Preferred Service Date*" required>
                         </div>
                         <div class="form-group full-width">
-                            <textarea class="form-control" placeholder="Is there anything else you would like us to know?"></textarea>
+                            <textarea name="additional_details" class="form-control" placeholder="Is there anything else you would like us to know?"></textarea>
+                        </div>
+                        <div class="form-group full-width">
+                            <button type="submit" id="form-submit-btn" class="submit-btn">Get My Free Estimate</button>
                         </div>
                     </div>
-                    <button type="submit" class="submit-btn">Get My Free Estimate</button>
                 </form>
             </div>
         </div>
@@ -1705,8 +1763,8 @@
                     <ul class="footer-links">
                         <li><a href="#home">Home</a></li>
                         <li><a href="#services">Services</a></li>
-                        <li><a href="#gallery">Gallery</a></li>
-                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#gallery">See Our Work</a></li>
+                        <li><a href="#why-choose-us">Why Choose Us</a></li>
                         <li><a href="#faq">FAQs</a></li>
                         <li><a href="#contact">Contact</a></li>
                     </ul>
@@ -1932,6 +1990,59 @@
             // Start check sequence from 1.png
             loadImagesSequentially(1);
         });
+
+        // AJAX Form Submission Handler for Email Forwarding
+        const estimateForm = document.getElementById('estimate-form');
+        const submitBtn = document.getElementById('form-submit-btn');
+
+        if (estimateForm) {
+            estimateForm.addEventListener('submit', function(e) {
+                e.preventDefault(); // Stop default page reload
+                
+                submitBtn.textContent = 'Sending Details...';
+                submitBtn.disabled = true;
+
+                const formData = new FormData(estimateForm);
+                const json = JSON.stringify(Object.fromEntries(formData));
+
+                // Submit to Web3forms API endpoint
+                fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: json
+                })
+                .then(async (response) => {
+                    let res = await response.json();
+                    if (response.status == 200) {
+                        // Success! Replace the inputs grid with our premium success card overlay
+                        const formContainer = document.querySelector('.estimate-form');
+                        formContainer.innerHTML = `
+                            <div class="form-success-card">
+                                <div class="success-checkmark-wrapper">
+                                    <i class="fas fa-check"></i>
+                                </div>
+                                <h3>Estimate Request Received!</h3>
+                                <p>Thank you for reaching out. Your details have been sent straight to our inbox. We will review your space size and service selection, and contact you back shortly with your free customized quote!</p>
+                            </div>
+                        `;
+                    } else {
+                        // Handle server-side errors
+                        submitBtn.textContent = 'Failed to Send. Try Again';
+                        submitBtn.disabled = false;
+                        console.error(res.message);
+                    }
+                })
+                .catch(error => {
+                    // Handle network-side connection dropouts
+                    submitBtn.textContent = 'Network Error. Try Again';
+                    submitBtn.disabled = false;
+                    console.error(error);
+                });
+            });
+        }
     </script>
 </body>
 </html>
