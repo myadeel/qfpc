@@ -10,7 +10,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght=0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -244,11 +244,6 @@
             max-width: 500px;
             margin-left: 15px;
             margin-bottom: 8px;
-        }
-
-        /* Mobile Header Title (Hidden on Desktop) */
-        .mobile-header-title {
-            display: none;
         }
 
         nav ul {
@@ -533,10 +528,6 @@
             gap: 1.5rem;
             margin-bottom: 3.5rem;
             align-items: center;
-        }
-
-        .hero-buttons .btn {
-            white-space: nowrap;
         }
 
         .hero-divider {
@@ -1321,28 +1312,6 @@
             .logo-breakout:hover img { transform: none; }
             .logo-text { display: none !important; }
             
-            /* Center-align company name on mobile header layout */
-            .mobile-header-title {
-                display: block;
-                position: absolute;
-                left: 50%;
-                top: 50%;
-                transform: translate(-50%, -50%);
-                font-family: var(--font-heading);
-                font-size: 1.2rem;
-                font-weight: 700;
-                color: #ffffff;
-                text-align: center;
-                white-space: nowrap;
-                pointer-events: none;
-                letter-spacing: 0.5px;
-                text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-            }
-            
-            .mobile-header-title span {
-                color: var(--accent-cyan);
-            }
-            
             /* Hero Collapse */
             .hero-grid { grid-template-columns: 1fr; text-align: center; }
             .hero-content { padding-top: 0; padding-right: 0; }
@@ -1383,19 +1352,6 @@
             .form-group.span-2 { grid-column: span 1; }
             .form-group.full-width { grid-column: span 1; }
         }
-
-        /* Sizing fine-tuning for narrower mobile viewports */
-        @media (max-width: 480px) {
-            .mobile-header-title {
-                font-size: 1.05rem;
-            }
-        }
-
-        @media (max-width: 380px) {
-            .mobile-header-title {
-                font-size: 0.9rem;
-            }
-        }
     </style>
 </head>
 <body>
@@ -1410,11 +1366,6 @@
                     <img src="logo1.png" alt="Quality First Pro Cleaning Logo">
                     <span class="logo-text">Quality <span>First</span> Pro Cleaning</span>
                 </a>
-            </div>
-
-            <!-- Beautiful Mobile Brand Title centered perfectly between logo and menu icon -->
-            <div class="mobile-header-title">
-                Quality <span>First</span> Pro Cleaning
             </div>
             
             <!-- Right-aligned Navigation (Desktop) -->
@@ -1745,7 +1696,7 @@
                             What if I am not satisfied with the clean? <i class="fas fa-chevron-down"></i>
                         </div>
                         <div class="faq-answer">
-                            We offer a 100% Satisfaction Guarantee. If you am not completely satisfied with any part of our service, please contact us within 24 hours, and we will return to re-clean the specific area at no additional cost.
+                            We offer a 100% Satisfaction Guarantee. If you are not completely satisfied with any part of our service, please contact us within 24 hours, and we will return to re-clean the specific area at no additional cost.
                         </div>
                     </div>
                     <div class="faq-item reveal delay-4">
