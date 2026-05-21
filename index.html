@@ -1012,7 +1012,7 @@
         }
 
         .estimate-form {
-            max-width: 850px;
+            max-width: 1100px; /* Made slightly wider to perfectly accommodate the sleek 4-column desktop layout */
             margin: 0 auto;
             background: rgba(10, 21, 32, 0.6);
             backdrop-filter: blur(10px);
@@ -1072,14 +1072,16 @@
             100% { transform: scale(1); }
         }
 
+        /* Form Grid Updated to 4 Columns on Desktop */
         .form-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: repeat(4, 1fr);
             gap: 1.8rem;
         }
 
         .form-group { display: flex; flex-direction: column; }
-        .form-group.full-width { grid-column: span 2; }
+        .form-group.span-2 { grid-column: span 2; }
+        .form-group.full-width { grid-column: span 4; }
 
         .form-group label {
             margin-bottom: 0.5rem;
@@ -1322,8 +1324,11 @@
             
             .about-wrap { grid-template-columns: 1fr; gap: 4rem; }
             .quote-card { right: 20px; bottom: -20px; }
-            .form-grid { grid-template-columns: 1fr; }
-            .form-group.full-width { grid-column: span 1; }
+            
+            /* Responsive form grid for Tablet screens (2 Columns) */
+            .form-grid { grid-template-columns: repeat(2, 1fr); }
+            .form-group.span-2 { grid-column: span 2; }
+            .form-group.full-width { grid-column: span 2; }
         }
 
         @media (max-width: 768px) {
@@ -1341,6 +1346,11 @@
                 text-align: center;
                 width: 100%;
             }
+
+            /* Responsive form grid for Mobile screens (1 Column) */
+            .form-grid { grid-template-columns: 1fr; }
+            .form-group.span-2 { grid-column: span 1; }
+            .form-group.full-width { grid-column: span 1; }
         }
     </style>
 </head>
@@ -1716,8 +1726,9 @@
                     <input type="hidden" name="subject" value="New Website Cleaning Estimate Request">
                     <input type="hidden" name="from_name" value="Quality First Pro Cleaning Service">
                     
-                    <!-- Dynamic form container block -->
+                    <!-- Dynamic form container block (Four Columns Grid) -->
                     <div class="form-grid" id="form-grid-content">
+                        <!-- Row 1: Demographics & Identity (4 Columns) -->
                         <div class="form-group">
                             <input type="text" name="name" class="form-control" placeholder="Full name*" required>
                         </div>
@@ -1730,12 +1741,11 @@
                         <div class="form-group">
                             <input type="number" name="zip" class="form-control" placeholder="Zip Code*" required>
                         </div>
-                        <div class="form-group">
-                            <input type="number" name="sqft" class="form-control" placeholder="House Sqft Estimate*" required>
-                        </div>
-                        <div class="form-group">
+                        
+                        <!-- Row 2: Property Specifications & Scheduling Details (4 Columns) -->
+                        <div class="form-group span-2">
                             <select name="service" class="form-control" required>
-                                <option value="" disabled selected>Service*</option>
+                                <option value="" disabled selected>Service Type*</option>
                                 <option value="residential">Residential Cleaning</option>
                                 <option value="commercial">Commercial Cleaning</option>
                                 <option value="deep">Deep Clean</option>
@@ -1745,8 +1755,16 @@
                             </select>
                         </div>
                         <div class="form-group">
+                            <input type="number" name="sqft" class="form-control" placeholder="Sqft Estimate*" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="preferred_date" onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'" class="form-control" placeholder="Preferred Date*" required>
+                        </div>
+                        
+                        <!-- Row 3: Room Counts & Pet Factors (4 Columns) -->
+                        <div class="form-group">
                             <select name="bedrooms" class="form-control" required>
-                                <option value="" disabled selected>How Many Bedrooms?*</option>
+                                <option value="" disabled selected>Bedrooms*</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
@@ -1756,7 +1774,7 @@
                         </div>
                         <div class="form-group">
                             <select name="bathrooms" class="form-control" required>
-                                <option value="" disabled selected>How Many Bathrooms?*</option>
+                                <option value="" disabled selected>Bathrooms*</option>
                                 <option value="1">1</option>
                                 <option value="1.5">1.5</option>
                                 <option value="2">2</option>
@@ -1765,22 +1783,22 @@
                                 <option value="3.5+">3.5+</option>
                             </select>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group span-2">
                             <select name="pets" class="form-control" required>
                                 <option value="" disabled selected>How Many Pets?*</option>
-                                <option value="0">0</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3+">3+</option>
+                                <option value="0">0 Pets</option>
+                                <option value="1">1 Pet</option>
+                                <option value="2">2 Pets</option>
+                                <option value="3+">3+ Pets</option>
                             </select>
                         </div>
-                        <!-- Select Date Field -->
-                        <div class="form-group">
-                            <input type="text" name="preferred_date" onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'" class="form-control" placeholder="Preferred Service Date*" required>
-                        </div>
+                        
+                        <!-- Textarea spanning full-width (4 columns) -->
                         <div class="form-group full-width">
                             <textarea name="additional_details" class="form-control" placeholder="Is there anything else you would like us to know?"></textarea>
                         </div>
+                        
+                        <!-- Submit Button spanning full-width (4 columns) -->
                         <div class="form-group full-width">
                             <button type="submit" id="form-submit-btn" class="submit-btn">Get My Free Estimate</button>
                         </div>
