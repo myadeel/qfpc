@@ -1296,8 +1296,7 @@
 
         /* Mobile Conversion Enhancements */
         .mobile-brand-name,
-        .mobile-hero-image,
-        .mobile-sticky-cta {
+        .mobile-hero-image {
             display: none;
         }
 
@@ -1395,38 +1394,42 @@
 
         .mobile-sticky-cta {
             position: fixed;
-            left: 12px;
-            right: 12px;
-            bottom: 12px;
+            right: 28px;
+            bottom: 28px;
             z-index: 2000;
-            background: linear-gradient(135deg, #006bb6, #00c7e8);
-            border: 1px solid rgba(255, 255, 255, 0.35);
-            border-radius: 22px;
-            box-shadow: 0 18px 45px rgba(0, 0, 0, 0.35), 0 0 20px rgba(0, 212, 255, 0.28);
-            overflow: hidden;
+            display: flex;
+            background: transparent;
+            border: none;
+            border-radius: 999px;
+            box-shadow: none;
+            overflow: visible;
         }
 
         .mobile-sticky-cta a {
-            flex: 1;
             color: #ffffff;
-            padding: 12px 8px;
+            padding: 14px 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
-            min-height: 68px;
+            gap: 11px;
+            min-height: 58px;
+            border-radius: 999px;
+            background: linear-gradient(135deg, rgba(0, 90, 180, 0.98), rgba(0, 165, 220, 0.95));
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            box-shadow: 0 14px 35px rgba(0, 0, 0, 0.28), 0 0 18px rgba(0, 212, 255, 0.24);
         }
 
-        .mobile-sticky-cta a:first-child {
-            background: linear-gradient(135deg, rgba(0, 90, 180, 0.95), rgba(0, 165, 220, 0.92));
+        .mobile-sticky-cta a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 18px 42px rgba(0, 0, 0, 0.32), 0 0 24px rgba(0, 212, 255, 0.35);
         }
 
-        .mobile-sticky-cta a + a {
-            border-left: 1px solid rgba(255, 255, 255, 0.35);
+        .mobile-sticky-cta .sticky-estimate {
+            display: none;
         }
 
         .mobile-sticky-cta i {
-            font-size: 1.65rem;
+            font-size: 1.45rem;
             color: #ffffff;
             flex-shrink: 0;
         }
@@ -1439,13 +1442,13 @@
         }
 
         .mobile-sticky-cta strong {
-            font-size: 0.9rem;
+            font-size: 0.86rem;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
 
         .mobile-sticky-cta small {
-            font-size: 0.82rem;
+            font-size: 0.78rem;
             opacity: 0.92;
             margin-top: 3px;
         }
@@ -1669,7 +1672,55 @@
             }
 
             .mobile-sticky-cta {
+                left: 50%;
+                right: auto;
+                bottom: 18px;
+                transform: translateX(-50%);
+                width: calc(100% - 48px);
+                max-width: 620px;
                 display: flex;
+                background: linear-gradient(135deg, #006bb6, #00c7e8);
+                border: 1px solid rgba(255, 255, 255, 0.35);
+                border-radius: 22px;
+                box-shadow: 0 18px 45px rgba(0, 0, 0, 0.35), 0 0 20px rgba(0, 212, 255, 0.28);
+                overflow: hidden;
+            }
+
+            .mobile-sticky-cta a {
+                flex: 1;
+                padding: 12px 8px;
+                gap: 10px;
+                min-height: 68px;
+                border-radius: 0;
+                border: none;
+                box-shadow: none;
+                background: transparent;
+            }
+
+            .mobile-sticky-cta a:hover {
+                transform: none;
+                box-shadow: none;
+            }
+
+            .mobile-sticky-cta a:first-child {
+                background: linear-gradient(135deg, rgba(0, 90, 180, 0.95), rgba(0, 165, 220, 0.92));
+            }
+
+            .mobile-sticky-cta .sticky-estimate {
+                display: flex;
+                border-left: 1px solid rgba(255, 255, 255, 0.35);
+            }
+
+            .mobile-sticky-cta i {
+                font-size: 1.65rem;
+            }
+
+            .mobile-sticky-cta strong {
+                font-size: 0.9rem;
+            }
+
+            .mobile-sticky-cta small {
+                font-size: 0.82rem;
             }
         }
 
@@ -1709,8 +1760,7 @@
             }
 
             .mobile-sticky-cta {
-                left: 8px;
-                right: 8px;
+                width: calc(100% - 16px);
                 bottom: 8px;
                 border-radius: 20px;
             }
@@ -2308,7 +2358,7 @@
     <div class="mobile-sticky-cta" aria-label="Quick contact actions">
         <a href="tel:7739161200" class="sticky-call">
             <i class="fas fa-phone"></i>
-            <span><strong>Call or TEXT</strong><small>773-916-1200</small></span>
+            <span><strong>Call or Text</strong><small>773-916-1200</small></span>
         </a>
         <a href="#contact" class="sticky-estimate">
             <i class="fas fa-file-signature"></i>
