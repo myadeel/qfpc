@@ -1295,35 +1295,23 @@
 
 
         /* Mobile Conversion Enhancements */
-        .mobile-header-phone,
+        .mobile-brand-name,
         .mobile-hero-image,
         .mobile-trust-row,
         .mobile-sticky-cta {
             display: none;
         }
 
-        .mobile-header-phone {
-            align-items: center;
-            gap: 8px;
+        .mobile-brand-name {
             color: #ffffff;
             font-weight: 600;
-            font-size: 1rem;
-            letter-spacing: 0.4px;
-            margin-left: auto;
-            margin-right: 18px;
-        }
-
-        .mobile-header-phone i {
-            color: var(--accent-cyan);
-            width: 34px;
-            height: 34px;
-            border: 1px solid rgba(0, 212, 255, 0.55);
-            border-radius: 50%;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 0 12px rgba(0, 212, 255, 0.2);
-            font-size: 0.9rem;
+            font-size: 1.02rem;
+            letter-spacing: 0.2px;
+            line-height: 1.2;
+            text-align: center;
+            margin: 0 14px;
+            flex: 1 1 auto;
+            white-space: nowrap;
         }
 
         .mobile-hero-image {
@@ -1379,6 +1367,20 @@
 
         .mobile-trust-item + .mobile-trust-item {
             border-left: 1px solid rgba(10, 30, 45, 0.12);
+        }
+
+        .mobile-trust-item .trust-copy {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .mobile-trust-item .stars {
+            color: #ffb703;
+            font-size: 0.7rem;
+            letter-spacing: 0.5px;
+            line-height: 1;
+            white-space: nowrap;
         }
 
         .mobile-trust-item i {
@@ -1557,9 +1559,8 @@
                 object-fit: contain;
             }
 
-            .mobile-header-phone {
-                display: inline-flex;
-                font-size: 0.92rem;
+            .mobile-brand-name {
+                display: block;
             }
 
             .menu-toggle {
@@ -1599,9 +1600,13 @@
             }
 
             .hero h1 {
-                font-size: clamp(2.55rem, 12vw, 4.1rem);
+                font-size: clamp(2.35rem, 10.8vw, 3.75rem);
                 line-height: 1.05;
                 margin-bottom: 1rem;
+            }
+
+            .hero h1 .hero-line-one {
+                white-space: nowrap;
             }
 
             .hero-subtitle {
@@ -1666,12 +1671,10 @@
         }
 
         @media (max-width: 420px) {
-            .mobile-header-phone span {
-                display: none;
-            }
-
-            .mobile-header-phone {
-                margin-right: 14px;
+            .mobile-brand-name {
+                font-size: 0.86rem;
+                max-width: 170px;
+                white-space: normal;
             }
 
             .hero-badge {
@@ -1681,7 +1684,7 @@
             }
 
             .hero h1 {
-                font-size: 2.72rem;
+                font-size: 2.45rem;
             }
 
             .hero p.desc {
@@ -1766,11 +1769,8 @@
                 </ul>
             </nav>
 
-            <!-- Mobile Header Phone CTA -->
-            <a href="tel:7739161200" class="mobile-header-phone" aria-label="Call Quality First Pro Cleaning">
-                <i class="fas fa-phone"></i>
-                <span>773-916-1200</span>
-            </a>
+            <!-- Mobile Header Brand Name -->
+            <div class="mobile-brand-name" aria-label="Quality First Pro Cleaning">Quality First Pro Cleaning</div>
 
             <!-- Mobile Menu Toggle Button -->
             <div class="menu-toggle" id="mobile-menu-btn">
@@ -1844,7 +1844,7 @@
                 <div class="hero-badge">
                     <i class="fas fa-star" style="color: #ffb703;"></i> Chicago's Premium Cleaning Service
                 </div>
-                <h1>A <em>Cleaner Space</em>,<br>A Better Life.</h1>
+                <h1><span class="hero-line-one">A <em>Cleaner Space</em>,</span><br><span>A Better Life.</span></h1>
                 <div class="hero-subtitle">
                     Where Quality Comes First
                 </div>
@@ -1864,7 +1864,7 @@
                 <div class="mobile-trust-row" aria-label="Service trust highlights">
                     <div class="mobile-trust-item">
                         <i class="fas fa-star"></i>
-                        <span>5-Star Service</span>
+                        <span class="trust-copy"><span>5-Star Service</span><span class="stars" aria-hidden="true">★★★★★</span></span>
                     </div>
                     <div class="mobile-trust-item">
                         <i class="fas fa-shield-alt"></i>
